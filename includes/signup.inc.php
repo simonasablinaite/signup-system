@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       require_once 'dbh.inc.php';
       require_once 'signup_model.inc.php';
-      // require_once 'signup_view.inc.php';
+      require_once 'signup_view.inc.php';
       require_once 'signup_contr.inc.php';
 
       // Klaidu tvarkykles:
@@ -33,7 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($errors) {
          $_SESSION["errors_signup"] = $errors;
          header("Location: ../index.php");
+         die();
       }
+
+      create_user($pdo, $pwd, $username, $email);
+
+      header("Location: ../index.php?signup=success");
+
+      $pdo = null;
+      $stmt = null;
+
+      die();
    } catch (PDOException $e) {
       die("Query failed: " . $e->getMessage());
    }
