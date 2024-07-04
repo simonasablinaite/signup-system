@@ -1,8 +1,5 @@
 <!-- Slaptazodzio paemimas is DB ir palyginimas su ivesti -->
-
 <?php
-
-declare(strict_types=1);
 
 function get_user(object $pdo, string $username)
 {

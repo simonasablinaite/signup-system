@@ -29,7 +29,7 @@ require_once 'includes/login_view.inc.php';
    if (!isset($_SESSION["user_id"])) { ?>
       <h1>Login</h1>
 
-      <form action="">
+      <form action="./includes/login.inc.php" method="post">
          <input type="text" name="username" placeholder="Usernane">
          <input type="password" name="pwd" placeholder="Password">
          <button>Login</button>
