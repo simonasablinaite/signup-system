@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/config_session.inc.php';
 require_once 'includes/signup_view.inc.php';
+require_once 'includes/login_view.inc.php';
 
 ?>
 
@@ -17,14 +18,27 @@ require_once 'includes/signup_view.inc.php';
 </head>
 
 <body>
-   <h1>Login</h1>
 
-   <form action="">
-      <input type="text" name="username" placeholder="Usernane">
-      <input type="password" name="pwd" placeholder="Password">
-      <button>Login</button>
-   </form>
+   <h3>
+      <?php
+      output_username()
+      ?>
+   </h3>
 
+   <?php
+   if (!isset($_SESSION["user_id"])) { ?>
+      <h1>Login</h1>
+
+      <form action="">
+         <input type="text" name="username" placeholder="Usernane">
+         <input type="password" name="pwd" placeholder="Password">
+         <button>Login</button>
+      </form>
+   <?php } ?>
+   <?php
+   check_login_errors();
+
+   ?>
 
    <h1>SignUp</h1>
 
@@ -38,6 +52,12 @@ require_once 'includes/signup_view.inc.php';
    <?php
    check_signup_errors();
    ?>
+
+   <h1>Logout</h1>
+
+   <form action="">
+      <button>Logout</button>
+   </form>
 </body>
 
 </html>
